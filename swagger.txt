@@ -1,0 +1,16 @@
+https://swagger.io/
+
+npm i swagger-ui-express
+
+tipagem
+npm i @types/swagger-ui-express -D
+
+
+
+Importing JSON file in TypeScript
+
+Make sure to add these settings in the compilerOptions section of your tsconfig.json (documentation):
+
+"resolveJsonModule": true,
+"esModuleInterop": true,
+
