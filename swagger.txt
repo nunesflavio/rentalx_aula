@@ -13,4 +13,41 @@ Make sure to add these settings in the compilerOptions section of your tsconfig.
 
 "resolveJsonModule": true,
 "esModuleInterop": true,
+-----------------------------------------------------
+https://www.notion.so/Docker-e-Docker-Compose-16771f2ceefe4a05a8c29df4ca49e97a#9e90bc8e2e4a4672a3a5d3baa7138f91
+Problema - network_mode is incompatible with port_bindings
+https://www.notion.so/Refatora-o-Docker-com-TypeORM-4500fc0d075349ac9b97d670e734d41b
+-------------------------------------------------------------
+cria imagem rentx
+docker build -t rentx .
+
+roda a rentx
+docker run -p 3333:3333 rentx
+
+acessar
+docker exec -it NAMECONTAINER /bin/bash
+
+observando as alteraçoes
+docker logs NOMEIMAGEM -f
+
+docker-compose up --force-recreate
+
+ip do local
+ docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $INSTANCE_ID
+
+
+***************************************************
+"typeorm": "^0.2.45"
+npm i typeorm@0.2.45 reflect-metadata
+
+npm i pg
+
+habilite - tsconfig
+ "experimentalDecorators": true,
+     "emitDecoratorMetadata": true,
+
+ npm run typeorm migration:create -- -n CreateCategories
+ rodar as migrations
+ npm run typeorm migration:run
+
 
