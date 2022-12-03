@@ -43,7 +43,9 @@ jspm_packages/
 
 #IDE
 .idea
+.vscode
 /tmp
+/dist
 
 # TypeScript v1 declaration files
 typings/
@@ -106,3 +108,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+#duplicate folder
+/src/database/data-source.ts
+gen

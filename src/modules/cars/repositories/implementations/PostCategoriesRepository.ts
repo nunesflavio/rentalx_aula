@@ -1,5 +1,5 @@
 import {ICategoriesRepository, ICreateCategoryDTO} from "../ICategoriesRepository";
-import {Category} from "../../model/Category";
+import {Category} from "../../entities/Category";
 
 export class PostCategoriesRepository implements  ICategoriesRepository {
     create({ name, description}: ICreateCategoryDTO ): void {

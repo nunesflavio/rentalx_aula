@@ -13,10 +13,18 @@ Make sure to add these settings in the compilerOptions section of your tsconfig.
 
 "resolveJsonModule": true,
 "esModuleInterop": true,
+----------------------------------------------
+OBS problema com docker
+No seu ormconfig.json o caminho para as entidades está incorreto, deixe assim:
+
+"entities": ["./src/modules/**/model/*.ts"],
 -----------------------------------------------------
 https://www.notion.so/Docker-e-Docker-Compose-16771f2ceefe4a05a8c29df4ca49e97a#9e90bc8e2e4a4672a3a5d3baa7138f91
 Problema - network_mode is incompatible with port_bindings
 https://www.notion.so/Refatora-o-Docker-com-TypeORM-4500fc0d075349ac9b97d670e734d41b
+
+How to remove node_modules
+https://gist.github.com/lmcneel/45594e550a3403d589bdcaad38138a83
 -------------------------------------------------------------
 cria imagem rentx
 docker build -t rentx .
@@ -32,9 +40,22 @@ docker logs NOMEIMAGEM -f
 
 docker-compose up --force-recreate
 
+Recomendo executar um docker-compose down -v --rmi local para remover todos os containers e volumes,
+para depois criar novamente com o up.
+
+sudo apt-get install --reinstall docker-ce
+
+
 ip do local
  docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $INSTANCE_ID
 
+  "host": "database",
+no ormconfig.json deixa o mesmo nome do serviço do banco q esta no docker-compose.yml
+Isso acontece porque a aplicação está sendo executada dentro do container do Docker, ou seja, quando roda na sua
+maquina, o host para acessar o container é localhost.
+
+Mas quando roda a aplicação, que está dentro do Docker, o host para conectar ao banco não pode ser localhost, pois
+ não tem como ser ela mesma, nesse caso, o host é o nome do serviço que deu ao banco no arquivo docker-compose.yml.
 
 ***************************************************
 "typeorm": "^0.2.45"
@@ -49,5 +70,40 @@ habilite - tsconfig
  npm run typeorm migration:create -- -n CreateCategories
  rodar as migrations
  npm run typeorm migration:run
+ ou
+ ./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
+
+  npm run typeorm migration:revert
+
+ ***********************************************
+ https://dev.arthurpedroti.com.br/backend-com-node-js-express-typeorm-e-postgresql-parte-1/
+**********************************************
+sudo -u postgres psql
+
+ ALTER USER postgres PASSWORD 'newpassword';
+sudo /etc/init.d/postgresql restart
+
+************************************************
+TSyringe - facilitador para as injeções de dependencia
+npm i --save tSyringe
+
+bcrypt.js -Criptografrar senha
+
+npm install bcryptjs
+npm i --save-dev @types/bcryptjs -D
+------------------------------------------------
+Entendendo autenticação com JWT
+
+$ npm install jsonwebtoken
+npm i @types/jsonwebtoken -D
+
+
+Erros
+npm i express-async-errors
+
+
+
+
+
 
 
